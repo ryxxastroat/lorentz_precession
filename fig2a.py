@@ -44,6 +44,7 @@ from matplotlib.ticker import (MultipleLocator, FormatStrFormatter,
 data = np.genfromtxt('sp1.dat')
 c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10 = data[:, 0], data[:, 1], data[:, 2], data[:, 3], data[:, 4], data[:, 5], data[:, 6], data[:, 7], data[:, 8], data[:, 9], data[:, 10]
 
+# Ntrim = 10000 (sp1, sp2), 5000 (tp1), 3333 (tp2)
 Ntrim = 10000
 c01=c0[:Ntrim]
 c11=c1[:Ntrim]
