@@ -20,8 +20,8 @@ from mpl_toolkits.axes_grid1.inset_locator import mark_inset
 
 import matplotlib.font_manager as font_manager
 
-plt.rcParams['xtick.labelsize'] = 40
-plt.rcParams['ytick.labelsize'] = 40
+plt.rcParams['xtick.labelsize'] = 30
+plt.rcParams['ytick.labelsize'] = 30
 plt.rcParams['xtick.direction'] = 'in'
 plt.rcParams['ytick.direction'] = 'in'
 plt.rcParams['xtick.major.size'] = 8
@@ -41,14 +41,14 @@ from matplotlib.ticker import (MultipleLocator, FormatStrFormatter,
 
 
 
-data1 = np.genfromtxt('gwtp1.dat')
+data1 = np.genfromtxt('data/gwtp1.dat')
 c0, c1, c2= data1[:, 0], data1[:, 1], data1[:, 2]
 Ntrim1 = 1667
 c01=c0[:Ntrim1]
 c11=c1[:Ntrim1]
 c21=c2[:Ntrim1]
 
-data2 = np.genfromtxt('gwtp2.dat')
+data2 = np.genfromtxt('data/gwtp2.dat')
 d0, d1, d2= data2[:, 0], data2[:, 1], data2[:, 2]
 Ntrim2 = 3333
 d01=d0[:Ntrim2]
@@ -59,8 +59,8 @@ d21=d2[:Ntrim2]
 fig, (ax1,ax2) = plt.subplots(2, 1,figsize=(24,10),sharex=True, sharey=False)
 plt.subplots_adjust(hspace=0.0)
 
-ax1.set_ylabel(r'$ rh_+ \,[t_c] $', fontsize=40)
-ax2.set_ylabel(r'$ rh_\times \,[t_c] $', fontsize=40)
+ax1.set_ylabel(r'$ rh_+ \,[t_c] $', fontsize=30)
+ax2.set_ylabel(r'$ rh_\times \,[t_c] $', fontsize=30)
 ax2.set_xlabel(r'$t \,[t_c]$', fontsize=40)
     
 ax1.plot(c01, c11)
