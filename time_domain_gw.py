@@ -20,8 +20,8 @@ from mpl_toolkits.axes_grid1.inset_locator import mark_inset
 
 import matplotlib.font_manager as font_manager
 
-plt.rcParams['xtick.labelsize'] = 40
-plt.rcParams['ytick.labelsize'] = 40
+plt.rcParams['xtick.labelsize'] = 30
+plt.rcParams['ytick.labelsize'] = 30
 plt.rcParams['xtick.direction'] = 'in'
 plt.rcParams['ytick.direction'] = 'in'
 plt.rcParams['xtick.major.size'] = 8
@@ -53,7 +53,7 @@ N=np.array([1667,3333])
 lim=np.array([100,200])
 ylim1=np.array([-0.249,-0.16])
 ylim2=np.array([0.249,0.16])
-color=['tab:blue','tab:orange']
+color=['tab:blue','tab:green']
 
 for i in range(2):
     gss = gridspec.GridSpecFromSubplotSpec(2, 1, subplot_spec=gs[i],
@@ -68,12 +68,14 @@ for i in range(2):
     
     ax0 = fig.add_subplot(gss[0])
     ax1 = fig.add_subplot(gss[1], sharex=ax0)
-    ax0.plot(c01,c11,color=color[i])
+    ax0.plot(c01,c11, color = color[i])
     ax0.set_ylim(ylim1[i],ylim2[i])
-    ax1.plot(c01,c21,color=color[i])
-    ax1.set_xlabel(r'$t\,[t_{c}]$', fontsize=35)
+    ax0.set_ylabel(r'$rh_+\,[t_{c}]$', fontsize=30)
+    ax1.plot(c01,c21, color = color[i])
+    ax1.set_xlabel(r'$t\,[t_{c}]$', fontsize=30)
     ax1.set_xlim(0,lim[i])
     ax1.set_ylim(ylim1[i],ylim2[i])
+    ax1.set_ylabel(r'$rh_\times\,[t_{c}]$', fontsize=30)
     ax0.tick_params(axis="x", labelbottom=0)
     
 plt.savefig("gw.pdf", format='pdf', bbox_inches="tight")

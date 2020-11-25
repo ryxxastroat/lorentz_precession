@@ -110,8 +110,9 @@ ax4.plot(x2, y2)
 
 
 #ax1.legend(loc='best', fontsize=30)
-ax2.xaxis.set_minor_locator(MultipleLocator(40))
-ax4.xaxis.set_minor_locator(MultipleLocator(40))
+ax2.xaxis.set_minor_locator(MultipleLocator(10))
+ax4.xaxis.set_major_locator(MultipleLocator(100))
+ax4.xaxis.set_minor_locator(MultipleLocator(20))
 ax1.yaxis.set_minor_locator(MultipleLocator(0.1))
 ax2.yaxis.set_minor_locator(MultipleLocator(0.1))
 ax3.yaxis.set_minor_locator(MultipleLocator(0.1))

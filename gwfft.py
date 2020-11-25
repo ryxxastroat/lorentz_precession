@@ -103,3 +103,5 @@ mark_inset(ax3, sub_axes, loc1=3, loc2=4)
 plt.savefig("gwfft.pdf", format='pdf', bbox_inches="tight")
 # with PdfPages('fft_gw.pdf') as pdf:
 #     pdf.savefig(fig)
+
+plt.show()
