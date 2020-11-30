@@ -43,19 +43,17 @@ from matplotlib.ticker import (MultipleLocator, FormatStrFormatter,
 
 
 
-data1 = np.genfromtxt('data/mntp1.dat')
+data1 = np.genfromtxt('data3/mntp1.dat')
 c0, c1, c2= data1[:, 0], data1[:, 1], data1[:, 2]
-Ntrim1 = 3333
+Ntrim1 = 5000
 c01=c0[:Ntrim1]
 c11=c1[:Ntrim1]
-c21=c2[:Ntrim1]
 
-data2 = np.genfromtxt('data/mntp2.dat')
+data2 = np.genfromtxt('data3/mntp2.dat')
 d0, d1, d2= data2[:, 0], data2[:, 1], data2[:, 2]
-Ntrim2 = 3333
+Ntrim2 = 5000
 d01=d0[:Ntrim2]
 d11=d1[:Ntrim2]
-d21=d2[:Ntrim2]
 
 cosrh1 = np.cos(0.6) * np.ones(len(c01))
 cosrh2 = np.cos(0.6) * np.ones(len(d01))
@@ -67,15 +65,15 @@ ax1.set_ylabel(r'$\hat {\bm{m}} \cdot \hat {\bm{n}}$', fontsize=30)
 ax2.set_ylabel(r'$\hat {\bm{m}} \cdot \hat {\bm{n}}$', fontsize=30)
 ax2.set_xlabel(r'$t \,[t_c]$', fontsize=40)
    
-ax1.set_ylim([-0.65,1.1])
+ax1.set_ylim([-0.75,1.1])
 ax2.set_ylim([-0.75,1.1])
 ax2.set_xlim([0,200])
  
-ax1.plot(c01, c11)
+ax1.plot(c01, c11, label='solution tp-I')
 ax1.plot(c01, cosrh1, color='r', linestyle='--')
 #ax1.plot(c01, c21, linestyle='--', color = 'gray')
 
-ax2.plot(d01, d11)
+ax2.plot(d01, d11, label='solution tp-II')
 ax2.plot(d01, cosrh2, color='r', linestyle='--')
 #ax2.plot(d01, d21, linestyle='--', color = 'gray')
 
@@ -89,6 +87,8 @@ ax1.yaxis.set_minor_locator(MultipleLocator(0.1))
 ax2.yaxis.set_major_locator(MultipleLocator(0.5))
 ax2.yaxis.set_minor_locator(MultipleLocator(0.1))
 
+ax1.legend(loc='best', fontsize=30, frameon=False)
+ax2.legend(loc='best', fontsize=30, frameon=False)
 
 plt.savefig("mnfig1.pdf", format='pdf', bbox_inches="tight")
 
