@@ -69,13 +69,13 @@ ax1.set_ylim([-0.75,1.1])
 ax2.set_ylim([-0.75,1.1])
 ax2.set_xlim([0,200])
  
-ax1.plot(c01, c11, label='solution tp-I')
+ax1.plot(c01, c11)
 ax1.plot(c01, cosrh1, color='r', linestyle='--')
-#ax1.plot(c01, c21, linestyle='--', color = 'gray')
+ax1.text(5, -0.6, 'solution tp-I', fontsize=30)
 
-ax2.plot(d01, d11, label='solution tp-II')
+ax2.plot(d01, d11)
 ax2.plot(d01, cosrh2, color='r', linestyle='--')
-#ax2.plot(d01, d21, linestyle='--', color = 'gray')
+ax2.text(5, -0.6, 'solution tp-II', fontsize=30)
 
 
 
@@ -87,8 +87,8 @@ ax1.yaxis.set_minor_locator(MultipleLocator(0.1))
 ax2.yaxis.set_major_locator(MultipleLocator(0.5))
 ax2.yaxis.set_minor_locator(MultipleLocator(0.1))
 
-ax1.legend(loc='best', fontsize=30, frameon=False)
-ax2.legend(loc='best', fontsize=30, frameon=False)
+#ax1.legend(loc='best', fontsize=30, frameon=False)
+#ax2.legend(loc='best', fontsize=30, frameon=False)
 
 plt.savefig("mnfig1.pdf", format='pdf', bbox_inches="tight")
 

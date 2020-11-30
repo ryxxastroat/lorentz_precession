@@ -49,17 +49,22 @@ fig = plt.figure(figsize=(24,16))
 gs = gridspec.GridSpec(2, 1, hspace=0.3)
 
 names=['gwtp1','gwtp2']
-N=np.array([1667,3333])
+labels=['solution tp-I','solution tp-II']
+N=np.array([10000,10000])
 lim=np.array([100,200])
-ylim1=np.array([-0.249,-0.16])
-ylim2=np.array([0.249,0.16])
+ylim1=np.array([-0.45,-0.35])
+ylim2=np.array([0.7,0.55])
+ylim3=np.array([-0.45,-0.35])
+ylim4=np.array([0.45,0.45])
+yposition=np.array([0.5,0.4])
+xminor=np.array([4,10])
 color=['tab:blue','tab:green']
 
 for i in range(2):
     gss = gridspec.GridSpecFromSubplotSpec(2, 1, subplot_spec=gs[i],
                                            hspace=0.0)
     
-    data=np.genfromtxt('data/'+names[i]+'.dat')
+    data=np.genfromtxt('data3/'+names[i]+'.dat')
     c0, c1, c2= data[:, 0], data[:, 1], data[:, 2]
    
     c01=c0[:N[i]]
@@ -74,8 +79,16 @@ for i in range(2):
     ax1.plot(c01,c21, color = color[i])
     ax1.set_xlabel(r'$t\,[t_{c}]$', fontsize=30)
     ax1.set_xlim(0,lim[i])
-    ax1.set_ylim(ylim1[i],ylim2[i])
+    ax1.set_ylim(ylim3[i],ylim4[i])
     ax1.set_ylabel(r'$rh_\times\,[t_{c}]$', fontsize=30)
     ax0.tick_params(axis="x", labelbottom=0)
-    
+    ax0.text(0.05*lim[i], yposition[i], labels[i], fontsize=30)
+    ax0.yaxis.set_major_locator(MultipleLocator(0.5))
+    ax0.yaxis.set_minor_locator(MultipleLocator(0.1))
+    ax1.yaxis.set_major_locator(MultipleLocator(0.5))
+    ax1.yaxis.set_minor_locator(MultipleLocator(0.1))
+    ax1.xaxis.set_minor_locator(MultipleLocator(xminor[i]))
+  
 plt.savefig("gw.pdf", format='pdf', bbox_inches="tight")
+
+

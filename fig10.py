@@ -41,34 +41,31 @@ from matplotlib.ticker import (MultipleLocator, FormatStrFormatter,
 
 
 
-data1 = np.genfromtxt('data/mntp1.dat')
-c0, c3, c4, c5, c6 = data1[:, 0], data1[:, 3], data1[:, 4], data1[:, 5], data1[:, 6]
-Ntrim1 = 3333
+data1 = np.genfromtxt('data3/mntp1.dat')
+c0, c2, c3 = data1[:, 0], data1[:, 2], data1[:, 3]
+Ntrim1 = 10000
 c01=c0[:Ntrim1]
+c21=c2[:Ntrim1]
 c31=c3[:Ntrim1]
-c41=c4[:Ntrim1]
-c51=c5[:Ntrim1]
-c61=c6[:Ntrim1]
 
-data11 = np.genfromtxt('data/mntp1_pset.dat')
+
+data11 = np.genfromtxt('data3/mntp1_pset.dat')
 cc0, cc1 = data11[:, 0], data11[:, 1]
-data111 = np.genfromtxt('data/mntp1_widset.dat')
-ccc0, ccc1, ccc2 = data111[:, 0], data111[:, 1], data111[:,2]
+data111 = np.genfromtxt('data3/mntp1_widset.dat')
+ccc0, ccc1 = data111[:, 0], data111[:, 1]
 
 
-data2 = np.genfromtxt('data/mntp2.dat')
-d0, d3, d4, d5, d6 = data2[:, 0], data2[:, 3], data2[:, 4], data2[:, 5], data2[:, 6]
+data2 = np.genfromtxt('data3/mntp2.dat')
+d0, d2, d3 = data2[:, 0], data2[:, 2], data2[:, 3]
 Ntrim2 = 10000
 d01=d0[:Ntrim2]
+d21=d2[:Ntrim2]
 d31=d3[:Ntrim2]
-d41=d4[:Ntrim2]
-d51=d5[:Ntrim2]
-d61=d6[:Ntrim2]
 
-data22 = np.genfromtxt('data/mntp2_psetfil.dat')
+data22 = np.genfromtxt('data3/mntp2_pset.dat')
 dd0, dd1 = data22[:, 0], data22[:, 1]
-data222 = np.genfromtxt('data/mntp2_widset.dat')
-ddd0, ddd1, ddd2 = data222[:, 0], data222[:, 1], data222[:,2]
+data222 = np.genfromtxt('data3/mntp2_widset.dat')
+ddd0, ddd1 = data222[:, 0], data222[:, 1]
 spl1=splrep(dd0,dd1)
 x1 = np.linspace(data22[0,0],  data22[len(data22)-1,0], 1000)
 y1 = splev(x1,spl1)
@@ -85,28 +82,29 @@ ax2.set_xlabel(r'$t \,[t_c]$', fontsize=30)
 ax4.set_xlabel(r'$t \,[t_c]$', fontsize=30)
  
 ax2.set_xlim([0,200])
-ax4.set_xlim([0,600])
-ax1.set_ylim([3.3,4.6])
+ax4.set_xlim([0,800])
+ax1.set_ylim([3.1,4.7])
 ax2.set_ylim([-0.1,1.3])
-ax3.set_ylim([3.4,5.1])
-ax4.set_ylim([-0.6,11])
+ax3.set_ylim([3.4,5.2])
+ax4.set_ylim([-0.6,6.4])
     
 ax1.plot(cc0, cc1, 'bo')
-ax1.plot(c01, c31)
+ax1.plot(c01, c21)
 
 
 ax2.plot(ccc0, ccc1, 'bo')
-ax2.plot(c01, c41)
+ax2.plot(c01, c31)
 
 
 ax3.plot(dd0, dd1, 'bo')
 ax3.plot(x1,y1)
-#ax3.plot(d01, d51)
+#ax3.plot(d01, d21)
 
 
 ax4.plot(ddd0, ddd1, 'bo')
-ax4.plot(x2, y2)
-#ax4.plot(d01, d61)
+ax4.plot(x2,y2)
+#ax4.plot(d01, d31)
+
 
 
 #ax1.legend(loc='best', fontsize=30)
@@ -116,10 +114,11 @@ ax4.xaxis.set_minor_locator(MultipleLocator(20))
 ax1.yaxis.set_minor_locator(MultipleLocator(0.1))
 ax2.yaxis.set_minor_locator(MultipleLocator(0.1))
 ax3.yaxis.set_minor_locator(MultipleLocator(0.1))
-ax4.yaxis.set_major_locator(MultipleLocator(5))
-ax4.yaxis.set_minor_locator(MultipleLocator(1))
+ax4.yaxis.set_major_locator(MultipleLocator(2))
+ax4.yaxis.set_minor_locator(MultipleLocator(0.4))
 
-
+ax1.text(10, 4.5, 'solution tp-I', fontsize=30)
+ax3.text(50, 4.95, 'solution tp-II', fontsize=30)
 
 plt.savefig("mnfig2.pdf", format='pdf', bbox_inches="tight")
 
